@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+     
+	<arg name="model" />
+	<arg name="gui" default="False" />
+	<param name="robot_description" textfile="$(find aiv_imu_v2)/urdf/aiv_imu_v2.xacro" />
+	<param name="use_gui" value="$(arg gui)"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find  wd_aiv_robot)/config/configNav.rviz" /> 
+ <!--        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find aiv_robot_nav)/launch/navigation.rviz" /> -->
+	<node name="aiv_odom_encoders" pkg="wd_aiv_robot" type="aiv_odom_encoders" ></node> 
+ </launch>

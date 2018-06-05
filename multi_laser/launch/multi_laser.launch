@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="urg_node" type="urg_node" name="urg0">
+        <param name="port" type="string" value="/dev/ttyACM0" />
+        <remap from="scan" to="scan_front" />
+    </node>
+    <node pkg="urg_node" type="urg_node" name="urg1">
+        <param name="port" type="string" value="/dev/ttyACM1" />
+        <remap from="scan" to="scan_back" />
+    </node>
+</launch>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="aiv_controller_pid" type="AIVpidServer" name="AIVpidServer" output="screen"/>
+  <node pkg="aiv_controller_pid" type="AIVpidClient" name="AIVpidClient" output="screen"/>
+</launch>

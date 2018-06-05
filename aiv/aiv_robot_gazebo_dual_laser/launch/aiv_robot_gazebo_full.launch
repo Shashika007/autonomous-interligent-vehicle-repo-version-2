@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/willowgarage_world.launch">
+  </include>
+
+
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find aiv_finalsh3)/urdf/aiv_finalsh_auto.xacro'" />
+
+  <param
+   name="use_gui"
+   value="$(arg gui)" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+  <!-- start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model aiv_finalsh3 -param robot_description"/>
+
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find aiv_finalsh3)/urdf.rviz" />
+
+
+
+
+</launch>

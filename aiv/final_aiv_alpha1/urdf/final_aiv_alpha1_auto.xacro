@@ -1,0 +1,568 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+  name="final_aiv_alpha1">
+   <xacro:macro name="default_inertial" params="mass">
+               <inertial>
+                       <mass value="${mass}" />
+                       <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                                iyy="1.0" iyz="0.0"
+                                izz="1.0" />
+               </inertial>
+	</xacro:macro>
+
+  <link name="base_footprint">
+	<visual>
+		<geometry>
+			<box size="0.001 0.001 0.001"/>
+		</geometry>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+	</visual>
+	<xacro:default_inertial mass="0.0001"/>
+  </link>
+ <gazebo reference="base_footprint">
+		<material>Gazebo/Green</material>
+		<turnGravityOff>false</turnGravityOff>
+	</gazebo>
+
+   <joint name="base_footprint_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_footprint" />
+		<child link="base_link" />
+	</joint>	
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="8.52900363862556E-17 -0.00156394179945474 0.129518871317834"
+        rpy="0 0 0" />
+      <mass
+        value="152.136546659951" />
+      <inertia
+        ixx="4.14561167080814"
+        ixy="1.08997913319055E-05"
+        ixz="6.11707533114008E-16"
+        iyy="5.38628750439474"
+        iyz="-0.0048732210756713"
+        izz="7.3945608306805" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+ <gazebo reference="base_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <link
+    name="right_wheel1">
+    <inertial>
+      <origin
+        xyz="-6.55281384709383E-13 -2.32827646051703E-13 0.0479999999994312"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-3.38627612015008E-35"
+        ixz="-6.86661375907486E-20"
+        iyy="0.00276634374084104"
+        iyz="-3.0057768047017E-35"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/right_wheel1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/right_wheel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+   <gazebo reference="right_wheel1">
+         <mu1 value="1.0"/>
+         <mu2 value="1.0"/>
+         <kp  value="10000000.0" />
+         <kd  value="1.0" />
+         <fdir1 value="1 0 0"/>
+	 <material>Gazebo/Black</material>
+          <turnGravityOff>false</turnGravityOff> <turnGravityOff>false</turnGravityOff> 
+      </gazebo>
+  <joint
+    name="base_to_wheel1"
+    type="continuous">
+    <origin
+      xyz="0.139897063904446 0.14156844913427 0.0450000000000102"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+ <transmission name="right_wheel1_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_to_wheel1" />
+      <actuator name="right_wheel1_joint_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  <link
+    name="left_wheel2">
+    <inertial>
+      <origin
+        xyz="-3.63903351896511E-13 -2.53304321962133E-13 -0.0480000000000041"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-2.74081616441698E-35"
+        ixz="1.00733666245754E-17"
+        iyy="0.00276634374084104"
+        iyz="5.47129115782852E-36"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/left_wheel2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/left_wheel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+   <gazebo reference="left_wheel2">
+         <mu1 value="1.0"/>
+         <mu2 value="1.0"/>
+         <kp  value="10000000.0" />
+         <kd  value="1.0" />
+         <fdir1 value="1 0 0"/>
+	 <material>Gazebo/Black</material>
+        <turnGravityOff>false</turnGravityOff> <turnGravityOff>false</turnGravityOff> 
+   </gazebo>
+  <joint
+    name="base_to_wheel2"
+    type="continuous">
+    <origin
+      xyz="0.139897063904454 -0.141724083720374 0.0450000000000127"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+     <transmission name="left_wheel2_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_to_wheel2" />
+      <actuator name="left_wheel2_joint_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  <link
+    name="left_wheel3">
+    <inertial>
+      <origin
+        xyz="-3.55021567699509E-13 3.14130665923784E-13 -0.0480000000000076"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="2.74301311244906E-35"
+        ixz="1.01409598537663E-17"
+        iyy="0.00276634374084104"
+        iyz="4.11510363356561E-35"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/left_wheel3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/left_wheel3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="left_wheel3">
+	 <mu1 value="1.0"/>
+         <mu2 value="1.0"/>
+         <kp  value="10000000.0" />
+         <kd  value="1.0" />
+         <fdir1 value="1 0 0"/>
+	 <material>Gazebo/Black</material>
+        <turnGravityOff>false</turnGravityOff> <turnGravityOff>false</turnGravityOff> 
+   </gazebo>
+  <joint
+    name="base_to_wheel3"
+    type="continuous">
+    <origin
+      xyz="-0.139482853114889 -0.141724083720375 0.0449999999997022"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <transmission name="left_wheel3_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_to_wheel3" />
+      <actuator name="left_wheel3_joint_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>  
+  <link
+    name="right_wheel4">
+    <inertial>
+      <origin
+        xyz="3.42337269643167E-13 -2.43756403950357E-13 0.0480000000000133"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-1.09847401603853E-38"
+        ixz="-6.86661375907486E-20"
+        iyy="0.00276634374084104"
+        iyz="-8.15262893040505E-36"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/right_wheel4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/right_wheel4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="right_wheel4">
+	 <mu1 value="1.0"/>
+         <mu2 value="1.0"/>
+         <kp  value="10000000.0" />
+         <kd  value="1.0" />
+         <fdir1 value="1 0 0"/>
+	 <material>Gazebo/Black</material>
+        <turnGravityOff>false</turnGravityOff> <turnGravityOff>false</turnGravityOff> 
+      </gazebo>
+  <joint
+    name="base_to_wheel4"
+    type="continuous">
+    <origin
+      xyz="-0.139482853115031 0.14156844913422 0.0449999999996804"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel4" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+<transmission name="right_wheel4_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="base_to_wheel4" />
+      <actuator name="right_wheel4_joint_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>  
+  <link
+    name="hokuyo_link_front">
+    <inertial>
+      <origin
+        xyz="-0.000780692813444839 4.15767225388119E-05 -0.00546903856585154"
+        rpy="0 0 0" />
+      <mass
+        value="0.134683421856803" />
+      <inertia
+        ixx="7.23289314303304E-05"
+        ixy="3.07307453428353E-07"
+        ixz="-6.60889302498486E-07"
+        iyy="7.60198201005007E-05"
+        iyz="1.05297506302458E-07"
+        izz="4.80658661333216E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/hokuyo_Link_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.156862745098039 0.156862745098039 0.156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/hokuyo_Link_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hokuyo_link__front_joint"
+    type="fixed">
+    <origin
+      xyz="0.285 0 0.138"
+      rpy="-3.1416 7.3143E-29 5.1523E-43" />
+    <parent
+      link="base_link" />
+    <child
+      link="hokuyo_link_front" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="hokuyo_link_back">
+    <inertial>
+      <origin
+        xyz="-0.00078069281344495 4.15767225387963E-05 -0.00546903856585151"
+        rpy="0 0 0" />
+      <mass
+        value="0.134683421856803" />
+      <inertia
+        ixx="7.23289314303307E-05"
+        ixy="3.07307453428344E-07"
+        ixz="-6.60889302498534E-07"
+        iyy="7.6019820100501E-05"
+        iyz="1.05297506302472E-07"
+        izz="4.80658661333217E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/hokuyo_Link_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.156862745098039 0.156862745098039 0.156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final_aiv_alpha1/meshes/hokuyo_Link_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hokuyo_link_back_joint"
+    type="fixed">
+    <origin
+      xyz="-0.28466 0 0.138"
+      rpy="-3.1416 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="hokuyo_link_back" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+ <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/robot</robotNamespace>
+	
+    </plugin>
+  </gazebo>
+
+<!-- hokuyo -->
+  <gazebo reference="hokuyo_link_front">
+    <sensor type="ray" name="front_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.001</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/robot/laser/scan1</topicName>
+        <frameName>hokuyo_link_front</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+<!-- hokuyo -->
+  <gazebo reference="hokuyo_link_back">
+    <sensor type="ray" name="rear_hokuyo_sensor">
+      <pose>0 0 0 0 0 3.14159</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.001</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/robot/laser/scan2</topicName>
+        <frameName>hokuyo_link_back</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+ <!-- Drive controller -->
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+      <alwaysOn>true</alwaysOn>
+    <updateRate>100.0</updateRate>
+    <robotNamespace>/</robotNamespace>
+    <leftFrontJoint>base_to_wheel1</leftFrontJoint>
+    <rightFrontJoint>base_to_wheel2</rightFrontJoint>
+    <leftRearJoint>base_to_wheel4</leftRearJoint>
+    <rightRearJoint>base_to_wheel3</rightRearJoint>
+    <wheelSeparation>1.132</wheelSeparation>
+    <wheelDiameter>0.154</wheelDiameter>
+      <torque>30</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_footprint</robotBaseFrame>  
+    <broadcastTF>1</broadcastTF>
+  </plugin>
+</gazebo>
+</robot>

@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<robot
+  name="aiv_finalsh3">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0205547931889634 -0.000731033629879456 0.127228336259245"
+        rpy="0 0 0" />
+      <mass
+        value="168.754504459945" />
+      <inertia
+        ixx="4.17621889059127"
+        ixy="0.0186018201416381"
+        ixz="-0.0630992884603515"
+        iyy="5.69669711203428"
+        iyz="-0.00224413359268311"
+        izz="7.74636632731185" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="right_wheel1">
+    <inertial>
+      <origin
+        xyz="-1.80938597438285E-13 -3.37160854790852E-14 0.0479999999998411"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-3.38627612015008E-35"
+        ixz="-6.86661375907486E-20"
+        iyy="0.00276634374084104"
+        iyz="-3.0057768047017E-35"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/right_wheel1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/right_wheel1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel1_joint"
+    type="continuous">
+    <origin
+      xyz="0.139897063904446 0.14156844913427 0.0450000000000102"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_wheel2">
+    <inertial>
+      <origin
+        xyz="-9.28701560098943E-14 -3.64777652528403E-14 -0.0480000000000041"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-1.00531223917652E-35"
+        ixz="1.00047004869847E-17"
+        iyy="0.00276634374084104"
+        iyz="5.47129115782852E-36"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/left_wheel2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/left_wheel2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel2_joint"
+    type="continuous">
+    <origin
+      xyz="0.139897063904454 -0.141724083720374 0.0450000000000127"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel2" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="left_wheel3">
+    <inertial>
+      <origin
+        xyz="-8.40438829641244E-14 9.73041092144911E-14 -0.0480000000000046"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="1.0075091872086E-35"
+        ixz="1.00722937161756E-17"
+        iyy="0.00276634374084104"
+        iyz="4.11510363356561E-35"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/left_wheel3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/left_wheel3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_wheel3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.139482853114889 -0.141724083720375 0.0449999999997022"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_wheel3" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="right_wheel4">
+    <inertial>
+      <origin
+        xyz="7.22755189030977E-14 -3.29250515740398E-14 0.0479999999999986"
+        rpy="0 0 0" />
+      <mass
+        value="1.38940851892519" />
+      <inertia
+        ixx="0.00276634374084104"
+        ixy="-1.09847401603854E-38"
+        ixz="-6.86661375907486E-20"
+        iyy="0.00276634374084104"
+        iyz="-8.15262893040505E-36"
+        izz="0.00419515021413011" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/right_wheel4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/right_wheel4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wheel4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.139482853115031 0.14156844913422 0.0449999999996804"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_wheel4" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="hokuyo_link">
+    <inertial>
+      <origin
+        xyz="-0.000780692813444839 -4.15767225388032E-05 0.00546903856585154"
+        rpy="0 0 0" />
+      <mass
+        value="0.134683421856803" />
+      <inertia
+        ixx="7.23289314303304E-05"
+        ixy="-3.07307453428314E-07"
+        ixz="6.6088930249849E-07"
+        iyy="7.60198201005007E-05"
+        iyz="1.05297506302451E-07"
+        izz="4.80658661333216E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/hokuyo_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.156862745098039 0.156862745098039 0.156862745098039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aiv_finalsh3/meshes/hokuyo_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hokuyo_link_joint"
+    type="fixed">
+    <origin
+      xyz="0.285 0 0.138"
+      rpy="7.0442E-15 -1.6389E-30 1.0616E-14" />
+    <parent
+      link="base_link" />
+    <child
+      link="hokuyo_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

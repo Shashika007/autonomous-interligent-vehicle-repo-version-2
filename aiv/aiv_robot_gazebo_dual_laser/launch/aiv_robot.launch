@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+<arg name="paused" default="true"/>
+
+  <arg name="use_sim_time" default="false"/>
+
+  <arg name="headless" default="false"/>
+
+  <arg name="debug" default="false"/>
+  <arg
+    name="model" />
+  <arg
+    name="gui"
+    default="true" />
+  <param
+    name="robot_description"
+    textfile="$(find aiv_finalsh3)/urdf/aiv_finalsh3.urdf" />
+  <param
+    name="use_gui"
+    value="$(arg gui)" />
+  <node
+    name="joint_state_publisher"
+    pkg="joint_state_publisher"
+    type="joint_state_publisher" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher" />
+  <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find aiv_finalsh3)/urdf.rviz" />
+</launch>

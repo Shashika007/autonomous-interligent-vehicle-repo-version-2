@@ -1,0 +1,12 @@
+# Define the goal
+float32 x_dot
+float32 y_dot
+float32 th_dot
+---
+# Define the result
+int32 ok
+---
+# Define a feedback message
+float32 x_dot
+float32 y_dot
+float32 th_dot

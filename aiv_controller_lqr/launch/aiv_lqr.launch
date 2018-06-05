@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="aiv_controller_lqr" type="AIVlqrServer" name="AIVlqrServer" output="screen"/>
+  <node pkg="aiv_controller_lqr" type="AIVlqrClient" name="AIVlqrClient" output="screen"/>
+</launch>

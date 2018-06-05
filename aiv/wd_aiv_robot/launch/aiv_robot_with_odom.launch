@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- this launch file corresponds to robot model in ros-pkg/robot_descriptions/pr2/erratic_defs/robots for full erratic -->
+
+    <arg name="model" />
+  <param name="robot_description" textfile="$(find wd_aiv_robot)/urdf/aiv_finalsh3.xacro" />
+  <node name="aiv_odom" pkg="wd_aiv_robot" type="aiv_odom" ></node> 
+  <!-- start robot state publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find wd_aiv_robot)/config/config.rviz" />
+</launch>
+
